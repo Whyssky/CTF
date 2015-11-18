@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -18,7 +19,7 @@ public class ArenaManager {
 	private CTF plugin = CTF.instance;
 	private FileConfiguration getConfig = CTF.instance.getConfig();
 	private File afile;
-	private FileConfiguration arenasf;
+	public FileConfiguration arenasf;
 
 	private Location lobby;
 	
@@ -64,6 +65,17 @@ public class ArenaManager {
 			 }
 	            
 		}catch (Exception ignored) {}
+	}
+	
+	public ConfigurationSection createConfigurationSection(String path) {
+		ConfigurationSection s = arenasf.createSection(path);
+		save();
+		return s;
+	}
+	
+	private void save() {
+		try { arenasf.save(afile); }
+		catch (Exception e) { e.printStackTrace(); }
 	}
 	
 	public static ArenaManager getManager() {

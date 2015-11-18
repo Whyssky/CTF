@@ -2,9 +2,12 @@ package me.whyssky.ctf;
 
 import java.util.ArrayList;
 
+import me.whyssky.ctf.Manager.ArenaManager;
 import me.whyssky.ctf.Manager.PlayerData;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
@@ -26,5 +29,19 @@ public class Arena {
 	
 	public Arena(int id) {
 		this.id = id;
+		
+		ConfigurationSection conf = ArenaManager.getManager().arenasf.getConfigurationSection(id + "");
+		
+		this.redSpawn = getLocation(conf.getConfigurationSection("redspawn"));
+		this.blueSpawn = getLocation(conf.getConfigurationSection("bluespawn"));
+	}
+	
+	private Location getLocation(ConfigurationSection path) {
+		return new Location(
+				Bukkit.getServer().getWorld(path.getString("world")),
+				path.getDouble("x"),
+				path.getDouble("y"),
+				path.getDouble("z")
+				);
 	}
 }
