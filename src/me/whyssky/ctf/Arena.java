@@ -1,6 +1,7 @@
 package me.whyssky.ctf;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import me.whyssky.ctf.Manager.ArenaManager;
 import me.whyssky.ctf.Manager.PlayerData;
@@ -44,4 +45,16 @@ public class Arena {
 				path.getDouble("z")
 				);
 	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	 public List<PlayerData> getPlayers() {
+	        return this.players;
+	 }
+	 
+	 public boolean isStarted() {
+		 return started;
+	 }
 }

@@ -9,6 +9,7 @@ import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import me.whyssky.ctf.Arena;
 import me.whyssky.ctf.CTF;
@@ -85,4 +86,46 @@ public class ArenaManager {
 		}
 		return am;
 	}
+	
+	public void addPlayer(Player p, int id) {
+		Arena a = getArena(id);
+		
+		if (a == null) {
+            p.sendMessage("null");
+            if(ids.contains(id) && arenasf.getConfigurationSection("arenas." + id).getString("world") == null) {
+                p.sendMessage("Null");
+                return;
+            }
+            return;
+        }
+		
+		if(this.isInGame(p)) {
+            p.sendMessage("InGame");
+            return;
+        }
+        
+        if(getArena(id).isStarted()) {
+            p.sendMessage("Started");
+            return;
+        } 
+	}
+	
+	public Arena getArena(int id){
+        for (Arena a : arenas) {
+            if (a.getId() == id) {
+                return a;
+            }
+        }
+ 
+        return null;
+    }
+	
+	public boolean isInGame(Player p) {
+        for (Arena a : this.arenas) {
+            for(PlayerData pd : a.getPlayers()) {
+            	return pd.getPlayer() == p ? true : false; 
+            }
+        }
+        return false;
+    }
 }

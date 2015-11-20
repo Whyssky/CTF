@@ -1,26 +1,27 @@
 package me.whyssky.ctf.Manager;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Team;
 
 public class PlayerData {
 	
-	private String name;
+	private Player player;
 	private Team team;
 	private ItemStack[] contents, armorContents;
 	private Location loc;
 	
-	public PlayerData(String name, Team team, ItemStack[] contents, ItemStack[] armorContents, Location loc) {
-		this.name = name;
+	public PlayerData(Player player, Team team, ItemStack[] contents, ItemStack[] armorContents, Location loc) {
+		this.player = player;
 		this.team = team;
 		this.contents = contents;
 		this.armorContents = armorContents;
 		this.loc = loc;
 	}
 	
-	public String getPlayerName() {
-		return name;
+	public Player getPlayer() {
+		return player;
 	}
 	
 	public Team getTeam() {
