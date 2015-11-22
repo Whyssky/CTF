@@ -3,6 +3,7 @@ package me.whyssky.ctf.Manager;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import me.whyssky.ctf.cmd.CreateArena;
 import me.whyssky.ctf.cmd.SubCommand;
 import me.whyssky.ctf.util.Language.Lang;
 
@@ -16,7 +17,7 @@ public class CommandManager implements CommandExecutor{
     private ArrayList<SubCommand> commands = new ArrayList<SubCommand>();
 	
 	public void setup() {
-		
+		commands.add(new CreateArena());
 	}
 
     @Override

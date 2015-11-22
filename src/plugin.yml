@@ -1,0 +1,7 @@
+name: CTF
+main: me.whyssky.ctf.CTF
+version: 1.0 ALFA
+description: Developed by Whyssky_BR
+commands:
+  test:
+    description: All comands.

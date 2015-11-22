@@ -57,4 +57,20 @@ public class Arena {
 	 public boolean isStarted() {
 		 return started;
 	 }
+	 
+	 public Location getRedSpawn() {
+		 return redSpawn;
+	 }
+	 
+	 public Location getBlueSpawn() {
+		 return blueSpawn;
+	 }
+	 
+	 public void setRedSpawn(Location l) {
+		 this.redSpawn = l;
+	 }
+	 
+	 public void setBlueSpawn(Location l) {
+		 this.blueSpawn = l;
+	 }
 }

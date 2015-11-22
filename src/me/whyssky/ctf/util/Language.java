@@ -6,7 +6,8 @@ import org.bukkit.configuration.file.YamlConfiguration;
 public class Language {
 	public enum Lang {
 
-        TITLE("title-name", "&3&lCTF&8&l> ");
+        TITLE("title-name", "&3&lCTF&8&l> "),
+        CREATE("create-arena", "&aCreated Arena %a!");
         
         private String path;
         private String def;

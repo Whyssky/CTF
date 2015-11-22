@@ -68,6 +68,14 @@ public class ArenaManager {
 		}catch (Exception ignored) {}
 	}
 	
+	/**
+    *
+    * @return the arenas.
+    */
+   public ArrayList<Arena> getArenas() {
+       return arenas;
+   }
+	
 	public ConfigurationSection createConfigurationSection(String path) {
 		ConfigurationSection s = arenasf.createSection(path);
 		save();
@@ -127,5 +135,40 @@ public class ArenaManager {
             }
         }
         return false;
+    }
+	
+	public Arena createArena() {      
+        
+        int id = 0;
+        
+        for(int b = 1; b < this.arenas.size() + 1 ; b++) {
+            if(!arenasf.getIntegerList("ids").contains(b)) {
+                id = b;
+                break;
+            }
+        }
+ 
+        Arena a = new Arena(id);
+        this.arenas.add(a);
+        
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for(int s : arenasf.getIntegerList("ids")) {
+            list.add(s);
+        }
+        list.add(id);
+        if(!ids.contains(id)) {
+            ids.add(id);
+        }
+        arenasf.set("ids", list);
+        
+        arenasf.createSection("arenas." + id);
+        
+        try {
+            arenasf.save(afile); 
+        }catch (Exception e) {
+            e.printStackTrace(); 
+        }
+ 
+        return a;
     }
 }

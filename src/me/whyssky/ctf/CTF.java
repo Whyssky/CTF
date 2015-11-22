@@ -12,7 +12,7 @@ import me.whyssky.ctf.util.Language.Lang;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class CTF extends JavaPlugin{
+public class CTF extends JavaPlugin {
 	
 	public static CTF instance;
 	public static Logger log;
@@ -92,4 +92,5 @@ public class CTF extends JavaPlugin{
     public File getLangFile() {
         return LANG_FILE;
     }
+    
 }
